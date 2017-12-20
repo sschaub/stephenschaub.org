@@ -1,0 +1,121 @@
+---
+layout: default
+title: Weddings
+---
+
+<!-- jplayer -->
+		<link rel="stylesheet" href="/public/circle.skin/circle.player.css">
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+		<script type="text/javascript" src="/public/js/jquery.transform2d.js"></script>
+		<script type="text/javascript" src="/public/js/jquery.grab.js"></script>
+		<script type="text/javascript" src="/public/js/jquery.jplayer.js"></script>
+		<script type="text/javascript" src="/public/js/mod.csstransforms.min.js"></script>
+		<script type="text/javascript" src="/public/js/circle.player.js"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var playerId = 0;
+
+function makeList(id, list) {
+
+    var html = "<table><tr>";
+    for (var i = 0; i < list.length; ++i) {
+        html += playerHTML.replace('{ID}', playerId + i).replace('{ID}', playerId + i).replace('{DESC}', list[i][0]);
+        if (i % 2 == 1)
+            html += "</tr><tr>"
+    }
+    html += "</tr></table>";
+    $("#"+id).append(html);
+    for (var i = 0; i < list.length; ++i) {
+         new CirclePlayer("#jquery_jplayer_" + playerId,
+            {
+                        mp3: "audio/" + list[i][1],
+            }, {
+                cssSelectorAncestor: "#cp_container_" + playerId,
+                swfPath: "/js",
+                supplied: "mp3",
+            });        
+        ++playerId;
+    }
+}
+
+$(document).ready(function(){
+    
+    makeList('recessionals',  [ 
+        [ 'Fanfare (Lemmens)', 'lemmensfanfare.mp3' ], 
+        [ 'Now Thank We All Our God (Karg Elert)', 'nowthankwe.mp3'],
+        [ 'Wedding March (Mendelssohn)', 'mendelssohnmarch.mp3'],
+        [ 'God of Grace (Manz)', 'godofgrace.mp3'],
+        [ 'Toccata from Symphony V (Widor)', 'toccata.mp3'],
+    ]);
+
+    makeList('prelude', [ 
+        [ 'Wondrous Love (Johnson)', 'wondrouslove.mp3' ], 
+        [ 'Psalm 19 (Marcello)', 'psalm19.mp3'],
+        [ 'Gavotte (Wesley)', 'wesleygavotte.mp3'],
+        [ 'Andante Tranquillo from Sonata III (Mendelssohn)', 'mendelssohnandante.mp3'],
+        [ 'Wachet Auf (Bach)', 'bachwachetauf.mp3'],
+        [ 'Rondeau (Mouret)', 'mouretrondeau.mp3'],
+        [ 'Trumpet Tune in D (Purcell)', 'purcelltrumpetd.mp3'],
+    ]);
+
+    makeList('processionals', [ 
+        [ 'Air I (Handel)', 'handelair1.mp3' ], 
+    ]);
+
+});
+//]]>
+
+    var playerHTML = '\
+        <td>\
+                    <div id="jquery_jplayer_{ID}" class="cp-jplayer"></div>\n\
+            <div id="cp_container_{ID}" class="cp-container">\n\
+				<div class="cp-circle-control"></div>\n\
+				<ul class="cp-controls">\n\
+					<li><a class="cp-play" >play</a></li>\n\
+					<li><a class="cp-pause" style="display:none;" >pause</a></li> \n\
+				</ul>\n\
+			</div></td>    \n\
+        <td>{DESC}</td>\
+    ';
+</script>
+
+<!-- jplayer end -->
+
+                    <h2>Classic Music for Your Wedding</h2>
+                    <p>You've selected your flowers, hired the photographer, and planned the reception.
+                        Now, you need the music that will make your ceremony truly memorable.
+                        Here is a collection of audio clips to help you choose selections
+                        for the important moments.
+                        
+                    </p>
+                    <p></p>
+                    <div id="prelude">
+                        <h3>Prelude and Postlude Selections</h3>
+                        <p>Wedding ceremonies usually feature quiet, meditative prelude music for the seating of the guests. 
+                            However, some couples prefer music that sparkles with anticipation. A combination of
+                            musical styles can help to keep the mood from being either too somber or too lively.
+                            The selections in this section are appropriate for use either in the prelude, or in an extended
+                            postlude used when guests are dismissed row by row.</p>
+                    </div>
+                    <div id="processionals">
+                        <h3>Processionals</h3>
+                        <p>The entrance of the wedding party and the bride is a highlight of the wedding ceremony.
+                            Stately music with a tempo of walking pace is appropriate. Some brides
+                            prefer a grand entrance with a crescendo of music, while others prefer a more intimate
+                             sound.</p>
+                            <p>Some hymn tunes can be used very effectively as processionals. 
+                            The hymn "Praise, My Soul, the King of Heaven" was chosen by Queen Elizabeth II
+                             as her wedding processional in 1947.</p>
+                        </p>
+                    </div>
+                    <div id="recessionals">
+                        <h3>Recessionals</h3>
+                        <p>These lively numbers provide a joyous conclusion to the ceremony.</p>
+                    </div>
+
+                    
+<?php include "../footer.php" ?>

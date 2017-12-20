@@ -1,0 +1,18 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+#permalink:           pretty
+#relative_permalinks: true
+
+# Setup
+paginate:            5
+
+# About/contact
+author:
+  name:              Stephen Schaub
+  url:               http://stephenschaub.org
+  email:             sschaub@gmail.org
+
+# Custom vars
+version:             1.0.0
+
